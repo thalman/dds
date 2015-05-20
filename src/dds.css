@@ -1,0 +1,142 @@
+.orangebg {
+    background-color: #ffba02;
+    height: 23px;
+    color: #de5209;
+    font-size: 90%;
+}
+
+.headerbg {
+    background-image: url(img/header-bg.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 140px;
+}
+
+.internalnavigation {
+    background-image: url(img/navigation-internal.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 88px;
+}
+
+.checkpointbg {
+    background-image: url(img/checkpoint.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 25px;
+    color: #de5209;
+    font-size: 90%;
+}
+
+.mycontainer {
+    width:951px;
+    background-color: #fafafa;
+}
+
+.albutton {
+    height: 80px;
+    background-color: #de5209;
+    font-size: 90%;
+    margin-top: 3px;
+    height: 82px;
+}
+
+.bluebg,
+.bluebg:hover,
+.bluebg:visited,
+.bluebg:link,
+.bluebg:active
+{
+    background-color: #0065ff;
+    color: white;
+    height: 23px;
+}
+
+.whitelink,
+.whitelink:hover,
+.whitelink:visited,
+.whitelink:link,
+.whitelink:active
+{
+    color: white !important;
+}
+
+
+.highlight:hover {
+    border-color: #5eaaff !important;
+    box-shadow: 0px 0px 14px #5eaaff;
+}
+
+.highlightbutton:hover {
+    background-color: #eeeeee !important;
+}
+
+.logout:hover {
+    background-color: #6191e9 !important;
+    color: #ffffff !important;
+    text-decoration: none;
+    padding-left:6px;
+    padding-right:6px;
+    border-radius: 2px;
+}
+
+.highlightyellow:hover {
+    background-color: #ffd35e !important;
+    text-decoration: none;
+    padding:6px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 14px #ffd35e;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    color: #000000;
+    cursor: default;
+    background-color: #F0F0F0;
+    border: 1px solid #dddddd;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs > li > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+    color: #FFFFFF;
+    background-color: #555555;
+    border: 1px solid #dddddd;
+    border-bottom-color: transparent;
+}
+
+#modalInfoDialog .modal-dialog
+{
+  width: 800px;
+}
+
+.ddsfooter {
+  position: absolute;
+  width:951px;
+  bottom: 0;
+  padding: 5px;
+  height: 35px;
+  background-color: #eeeeee;
+  border-top: 1px solid #cccccc;
+}
+
+.buttonfixwidth {
+  font-size: small;
+  width: 20ex;
+  background-color: #ffffff;
+}
+
+html {
+    position: relative;
+    min-height:100%; /* needed for container min-height */
+}
+
+body {
+    margin-bottom: 35pt;
+}
+                                                                                                                                                          font-family:arial,sans-serif;                                                                                                     
+                                                                                                                                                              font-size:small;                                                                                                                  
+                                                                                                                                                                  color:black;                                                                                                                      
+                                                                                                                                                                  } 
