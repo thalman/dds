@@ -18,4 +18,9 @@ $GLOBALS["resetpassword"] = "secret";
 // time [min], for how long application reset is protected with password
 $GLOBALS["resettime"] = 10000000;
 
+// after this timeout [s], new QR code is created and used
+// 5s before this timeout QR code starts to fade out
+// this parameter should be little bit shorter than startTimeout of AIM
+$GLOBALS["qrcodetimeout"] = 25;
+
 ?>

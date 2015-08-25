@@ -1,6 +1,8 @@
 var authId;
 var bindingId;
 var bindingKey;
+var starttime;
+var fadeout = false;
 
 function aducid_open() {
     var xmlHttp = null;
@@ -24,12 +26,24 @@ function aducid_open() {
         }
     }
     postMessage(["open",authId,bindingId,bindingKey]);
+    starttime = new Date().getTime();
+    fadeout = false;
 }
 
 function check() {
     var xmlHttp = null;
     var response;
+    var now = new Date().getTime();
     
+    if( now - starttime >= (@qrcodetimeout@ - 5) * 1000 && ! fadeout ) {
+        // send fadeout message QR code is about to expire
+        postMessage(["fadeout"]);
+        fadeout=true;
+    }
+    if( now - starttime >= ( @qrcodetimeout@ ) * 1000 ) {
+        // create new image
+        aducid_open();
+    }
     // FIXME vypnuto
     //setTimeout(check,1000);
     //return ;

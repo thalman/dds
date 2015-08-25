@@ -258,7 +258,7 @@ class PageProducer {
             "            </div>\n".
             "          </td>\n".
             "          <td>\n".
-            "    	    <img id=\"aducidqrcode\" SRC=\"img/qrCode.png\" width=\"120px\">\n".
+            "    	    <img id=\"aducidqrcode\" SRC=\"img/qrCode.png\" width=\"120px\" style=\"opacity: 0\">\n".
             "          </td>\n".
             "        </tr>\n".
             "      </table>\n".

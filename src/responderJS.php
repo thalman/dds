@@ -7,6 +7,7 @@ function printJS($file) {
     if ($handle) {
         while (($line = fgets($handle)) !== false) {
             $line = str_replace("@aim@",$GLOBALS["aim"],$line);
+            $line = str_replace("@qrcodetimeout@",$GLOBALS["qrcodetimeout"],$line);
             echo "$line";
         }
     }
