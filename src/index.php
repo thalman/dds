@@ -16,7 +16,6 @@ $db = new DDSDatabase();
 $user = new DDSUser($db);
 $pp = new PageProducer($db,$user);
 
-// error_log("Action: $action");
 switch($action) {
     case "loginp": // password login
         if( ! $user->loginWithPassword($_REQUEST["username"],$_REQUEST["password"]) ) {
@@ -35,7 +34,7 @@ switch($action) {
         $a = new AducidSessionClient($GLOBALS["aim"]);
         $a->setFromRequest();
         if( ! $user->loginWithADUCID($a) ) {
-            $result = $a->getPSLAttributes(AducidAttributeSetName::ALL);
+            $result = $a->getPSLAttributes(AducidAttributeSetName::ERROR);
             $pp->errorMessage("Přihlášení ADUCIDem se nezdařilo. (". $result["statusAuth"] . "/" . $result["statusAIM"] .")");
             //$pp->errorMessage("Přihlášení ADUCIDem se nezdařilo.");
         }
@@ -78,7 +77,7 @@ switch($action) {
                 $pp->errorMessage("Tento PEIG patří někomu jinému. Nelze spárovat!");
             }
         } else {
-            $result = $a->getPSLAttributes(AducidAttributeSetName::ALL);
+            $result = $a->getPSLAttributes(AducidAttributeSetName::ERROR);
             $pp->errorMessage("Propojení s ADUCIDem se nezdařilo. (". $result["statusAuth"] . "/" . $result["statusAIM"] .")");
             // $pp->errorMessage("Propojení s ADUCIDem se nezdařilo.");
         }
@@ -101,15 +100,17 @@ switch($action) {
         break;
     case "proofingotpcheck":
         $a = new AducidSessionClient($GLOBALS["aim"]);
+        $a->setFromRequest();
         if( $a->verify() ) {
             if( $user->loginWithOTP($_SESSION["proofingotp"]) ) {
                 $user->setUdi( $a->getUserDatabaseIndex() );
                 $user->save(); // FIXME
             } else {
-                $pp->errorMessage( "Chybné jednorázové heslo!" );	    
+                $pp->errorMessage( "Chybné jednorázové heslo!" );
             }
         } else {
-            $pp->errorMessage( "Chyba ADUCID autentizace!" );
+            $result = $a->getPSLAttributes(AducidAttributeSetName::ERROR);
+            $pp->errorMessage( "Chyba ADUCID autentizace! (". $result["statusAuth"] . "/" . $result["statusAIM"] .")");
         }
         unset($_SESSION["proofingotp"]);
         break;
@@ -131,6 +132,7 @@ switch($action) {
         break;
     case "proofingpwdcheck":
         $a = new AducidSessionClient($GLOBALS["aim"]);
+        $a->setFromRequest();
         if( $a->verify() ) {
             if( $user->loginWithPassword( $_SESSION["proofinguser"],$_SESSION["proofingpwd"] ) ) {
                 $user->setUdi( $a->getUserDatabaseIndex() );
@@ -138,7 +140,8 @@ switch($action) {
                 $pp->errorMessage( "Chybné jednorázové heslo!" );
             }
         } else {
-            $pp->errorMessage( "Chyba ADUCID autentizace!" );
+            $result = $a->getPSLAttributes(AducidAttributeSetName::ERROR);
+            $pp->errorMessage("Chyba ADUCID autentizace! (". $result["statusAuth"] . "/" . $result["statusAIM"] .")");
         }
         unset($_SESSION["proofinguser"]);
         unset($_SESSION["proofingpwd"]);
