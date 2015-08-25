@@ -6,9 +6,9 @@ class DDSDatabase {
     protected $connection;
     protected $default_users = array(
         0 => array("ft6Yj9","Password1","Josef Novák",NULL),
-        1 => array("x5q9nn","Ss123456","Šimon Svoboda",NULL),
-        2 => array("matous",NULL,"Matouš Novotný","1010823067"),
-        3 => array("petr",NULL,"Petr Dvořák","1948430524"),
+        1 => array("x5q9nn","s123456","Šimon Svoboda",NULL),
+        2 => array("matous",NULL,"Matouš Novotný","101010"),
+        3 => array("petr",NULL,"Petr Dvořák","abcdabcd"),
     );
     public function __construct( $db = "sqlite:db/db.sql" ) {
         $this->connection = $db;

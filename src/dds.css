@@ -61,6 +61,15 @@
     color: white !important;
 }
 
+.graylink,
+.graylink:hover,
+.graylink:visited,
+.graylink:link,
+.graylink:active
+{
+    color: #999999 !important;
+}
+
 
 .highlight:hover {
     border-color: #5eaaff !important;
@@ -120,6 +129,7 @@
   height: 35px;
   background-color: #eeeeee;
   border-top: 1px solid #cccccc;
+  text-align:right;
 }
 
 .buttonfixwidth {

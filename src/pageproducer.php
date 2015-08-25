@@ -524,13 +524,11 @@ class PageProducer {
     function ddsFoot($list="ALL", $header=1) {
         $html =
             "\n  <!-- =================================== ddsFoot -->\n".
-            "  <div class=\"row\">\n".
+            "  <div class=\"row ddsfooter\">\n".
             "    <div class=\"ddsfooter\">\n".
-            "    <a href=\"index.php?action=reset\" class=\"btn btn-default btn-xs buttonfixwidth\" onClick=\"return invokeResetDbModal()\"  title=\"Reset databáze do počátečního stavu\" >\n".
-            "    Reset identit".
+            "    <a href=\"index.php?action=reset\" class=\"graylink\" onClick=\"return invokeResetDbModal()\"  title=\"Reset aplikace do počátečního stavu\" >\n".
+            "    Pro demonstrační účely lze vymazat identity".
             "    </a>&nbsp;\n".
-            "    <a href=\"index.php?action=initpersonalfactor\"  class=\"btn btn-default btn-xs buttonfixwidth\" title=\"Vytvořit obrázkové heslo na PEIGu\">Vytvořit tajemství</a>&nbsp;\n".
-            "    <a href=\"index.php?action=initpayment\"  class=\"btn btn-default btn-xs buttonfixwidth\" title=\"\" >Připravit podpisování</a>&nbsp;\n".
             "    </div>\n".
             "  </div>";
             return $html;
@@ -760,7 +758,7 @@ class PageProducer {
             $this->registrationForm() .
             $this->registrationFormInfo() .
             "  </div> <!-- row -->\n".
-            "<br/>\n".
+            /* "<br/>\n". */
             $this->ddsFoot() .
             "</div> <!-- container -->\n";
         return $this->head() . $html . $this->foot();

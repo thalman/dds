@@ -16,6 +16,6 @@ $GLOBALS["sessionname"] = "dds";
 $GLOBALS["resetpassword"] = "secret";
 
 // time [min], for how long application reset is protected with password
-$GLOBALS["resettime"] = 10;
+$GLOBALS["resettime"] = 10000000;
 
 ?>

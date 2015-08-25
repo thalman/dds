@@ -5,7 +5,7 @@ include_once "pageproducer.php";
 include_once "database.php";
 include_once "user.php";
 
-aducidRequire(3.000);
+aducidRequire(3.002);
 
 session_name($GLOBALS["sessionname"]);
 session_start();
@@ -35,7 +35,9 @@ switch($action) {
         $a = new AducidSessionClient($GLOBALS["aim"]);
         $a->setFromRequest();
         if( ! $user->loginWithADUCID($a) ) {
-            $pp->errorMessage("Přihlášení ADUCIDem se nezdařilo.");
+            $result = $a->getPSLAttributes(AducidAttributeSetName::ALL);
+            $pp->errorMessage("Přihlášení ADUCIDem se nezdařilo. (". $result["statusAuth"] . "/" . $result["statusAIM"] .")");
+            //$pp->errorMessage("Přihlášení ADUCIDem se nezdařilo.");
         }
         break;
     case "logout": // user logout
@@ -59,7 +61,8 @@ switch($action) {
         break;
     case "startusingpeig":
         $a = new AducidSessionClient($GLOBALS["aim"]);
-        $a->open($GLOBALS["myurl"] . "?action=startusingpeigcheck");
+        // $a->open($GLOBALS["myurl"] . "?action=startusingpeigcheck");
+        $a->initPayment(true, $GLOBALS["myurl"] . "?action=startusingpeigcheck");
         $a->invokePeig(
             AducidTransferMethod::REDIRECT,
             NULL
@@ -75,7 +78,9 @@ switch($action) {
                 $pp->errorMessage("Tento PEIG patří někomu jinému. Nelze spárovat!");
             }
         } else {
-            $pp->errorMessage("Propojení s ADUCIDem se nezdařilo.");
+            $result = $a->getPSLAttributes(AducidAttributeSetName::ALL);
+            $pp->errorMessage("Propojení s ADUCIDem se nezdařilo. (". $result["statusAuth"] . "/" . $result["statusAIM"] .")");
+            // $pp->errorMessage("Propojení s ADUCIDem se nezdařilo.");
         }
         break;
     case "proofingotp":
@@ -84,7 +89,8 @@ switch($action) {
             $_SESSION["informed"] = true;
             $_SESSION["proofingotp"] = $_REQUEST["password"];
             $a = new AducidSessionClient($GLOBALS["aim"]);
-            $a->open($GLOBALS["myurl"] . "?action=proofingotpcheck");
+            // $a->open($GLOBALS["myurl"] . "?action=proofingotpcheck");
+            $a->initPayment(true, $GLOBALS["myurl"] . "?action=proofingotpcheck");
             $a->invokePeig(
                 AducidTransferMethod::REDIRECT,
                 NULL
@@ -244,3 +250,4 @@ if( $user->loggedIn() ) {
 }
 
 ?>
+

@@ -21,7 +21,6 @@ function invokeInfoDialog(){
 function createSignForm(name) {
     if( document.getElementById("poa") ) { return; };
     document.getElementById("signframe").innerHTML = "<form id=\"poa\" action=\"?\" method=\"post\"><textarea name=\"text\" class=\"form-control\" maxlength=\"79\" rows=\"4\" cols=\"40\">"+
-"Já, " + name + ", zplnomocňuji Marii Černou." +
 "</textarea><input type=\"submit\" class=\"btn btn-default\" value=\"podepsat\"><input type=\"hidden\" name=\"action\" value=\"signpoa\" /></form>";
 }
 
