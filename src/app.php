@@ -247,8 +247,6 @@ case "logout":
     break;
 }
 
-echo popupMessageWithParams("info.png","","nom d'utilisateur et mot de passe","Close","popupPassword");
-
 if( $errormsg != "" ) {
     echo popupMessageWithParams("failed.png","Error",$errormsg,"Close");
     echo onLoadJs("popupModal");

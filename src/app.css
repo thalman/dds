@@ -32,7 +32,7 @@ html,body {
     width: 80%;
 }
 
-.loginbutton {
+.loginbutton, .loginbutton:active {
     background-color: #9d0b0e;
     font-weight: bold;
     font-size: 150%;
@@ -40,7 +40,7 @@ html,body {
     width: 26ex;
 }
 
-.loginbutton:hover {
+.loginbutton:hover, .loginbutton:focus {
     background-color: #cb3134;
     color: white;
 }

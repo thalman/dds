@@ -35,7 +35,7 @@ function setLanguage(clickedId) {
     var element = document.getElementById("loginbutton");
     if( element ) {
 	if( clickedId == 103 ) {
-	    element.innerHTML = "Přihlásit<img src=\"app-login-arrow.png\">";
+	    element.innerHTML = "Dále<img src=\"app-login-arrow.png\">";
 	    doaducid = 1;
 	} else {
 	    element.innerHTML = "Suivant<img src=\"app-login-arrow.png\">";
@@ -45,9 +45,5 @@ function setLanguage(clickedId) {
 }
 
 function checkAction() {
-    if( doaducid == 0 ) {
-	$('#popupPassword').modal('show');
-	return false;
-    }
-    return true;
+    return ( doaducid != 0 );
 }
